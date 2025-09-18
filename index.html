@@ -21,7 +21,8 @@
               obsidian: '#0f1117',
               surface: '#171b22',
               ink: '#e9eef5',
-              accent: { DEFAULT: '#22e3ac', soft: '#22e3ac1a' }
+              /* AZUL SERIO */
+              accent: { DEFAULT: '#2563EB', soft: '#2563EB1a' }
             },
             boxShadow: { soft: '0 10px 30px rgba(0,0,0,.35)' },
             fontFamily: {
@@ -74,94 +75,53 @@
       .pulse-ring { animation: pulse-ring 2s cubic-bezier(0.455,0.03,0.515,0.955) infinite; }
       @keyframes pulse-ring { 0%{transform:scale(.8);opacity:1} 100%{transform:scale(2.5);opacity:0} }
 
+      /* Badge superior del hero en AZUL */
       .tech-badge {
-        background: rgba(34,227,172,0.1);
-        border: 1px solid rgba(34,227,172,0.3);
-        color: #22e3ac;
+        background: rgba(37,99,235,0.10);
+        border: 1px solid rgba(37,99,235,0.30);
+        color: #2563EB;
         backdrop-filter: blur(10px);
       }
-      /* ===== GRADIENTES & FADES QUE FALTABAN ===== */
 
-/* === PORTFOLIO: verde sólido con fades arriba/abajo === */
-:root{
-  /* verde no tan oscuro; puedes ajustar si quieres */
-  --portfolio-blue:#0c9978; /* 
-}
+      /* ===== PORTFOLIO: fondo azul sólido con fades arriba/abajo ===== */
+      :root{
+        --portfolio-blue:#2563EB;  /* azul serio del bloque Portfolio */
+      }
+      .portfolio-solid{
+        position:relative;
+        background: var(--portfolio-blue);
+        overflow:hidden;
+      }
+      .portfolio-solid::before{
+        content:"";
+        position:absolute; left:0; right:0; top:-120px; height:160px;
+        background: linear-gradient(to bottom, #F7F8FA 0%, rgba(247,248,250,0) 80%);
+        pointer-events:none; z-index:1;
+      }
+      .portfolio-solid::after{
+        content:"";
+        position:absolute; left:0; right:0; bottom:-120px; height:160px;
+        background: linear-gradient(to top, #F7F8FA 0%, rgba(247,248,250,0) 80%);
+        pointer-events:none; z-index:1;
+      }
+      .portfolio-content{ position:relative; z-index:2; }
 
-.portfolio-solid{
-  position:relative;
-  background: var(--portfolio-blue);
-  overflow:hidden;           /* oculta los pseudo-elementos fuera del contenedor */
-}
+      /* Fondo oscuro reutilizable (About / Book) */
+      .dark-gradient-bg{
+        position:relative; overflow:hidden;
+        background: linear-gradient(135deg, #0f1117 0%, #1a202c 35%, #242d3d 70%, #0f1117 100%);
+      }
+      .dark-content{ position:relative; z-index:2; }
 
-/* Fade superior: de blanco -> transparente para “entrar” al azul sólido */
-.portfolio-solid::before{
-  content:"";
-  position:absolute; left:0; right:0; top:-120px; height:160px;
-  background: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0) 80%);
-  pointer-events:none; z-index:1;
-}
-
-/* Fade inferior: de blanco -> transparente invertido para “salir” al blanco */
-.portfolio-solid::after{
-  content:"";
-  position:absolute; left:0; right:0; bottom:-120px; height:160px;
-  background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0) 80%);
-  pointer-events:none; z-index:1;
-}
-
-/* Asegura que el contenido quede encima de los fades */
-.portfolio-content{ position:relative; z-index:2; }
-
-
-/* Fondo oscuro reutilizable (About / Book) */
-.dark-gradient-bg{
-  position:relative; overflow:hidden;
-  background: linear-gradient(135deg, #0f1117 0%, #1a202c 35%, #242d3d 70%, #0f1117 100%);
-}
-.dark-content{ position:relative; z-index:2; }
-
-/* Fade entre el FAQ (gris claro) y el inicio de About (oscuro) */
-#about{ position:relative; }
-#about::before{
-  content:"";
-  position:absolute; left:0; right:0; top:-100px; height:100px;
-  /* de gris claro a oscuro */
-  background: linear-gradient(to bottom, rgba(247,248,250,1), rgba(15,17,23,0));
-  pointer-events:none;
-  z-index:1;
-}
-:root{
-  /* Verde principal del bloque Portfolio */
-  --portfolio-green: #22e3ac;
-}
-
-/* Fondo sólido verde + fades arriba/abajo */
-.portfolio-solid{
-  position: relative;
-  background: var(--portfolio-green);
-  overflow: hidden;
-}
-
-/* Fade superior: gris claro -> transparente para entrar desde secciones claras */
-.portfolio-solid::before{
-  content:"";
-  position:absolute; left:0; right:0; top:-120px; height:160px;
-  background: linear-gradient(to bottom, #F7F8FA 0%, rgba(247,248,250,0) 80%);
-  pointer-events:none; z-index:1;
-}
-
-/* Fade inferior: gris claro -> transparente para salir hacia secciones claras */
-.portfolio-solid::after{
-  content:"";
-  position:absolute; left:0; right:0; bottom:-120px; height:160px;
-  background: linear-gradient(to top, #F7F8FA 0%, rgba(247,248,250,0) 80%);
-  pointer-events:none; z-index:1;
-}
-
-/* El contenido queda por encima de los fades */
-.portfolio-content{ position:relative; z-index:2; }
-
+      /* Fade entre el FAQ (gris claro) y el inicio de About (oscuro) */
+      #about{ position:relative; }
+      #about::before{
+        content:"";
+        position:absolute; left:0; right:0; top:-100px; height:100px;
+        background: linear-gradient(to bottom, rgba(247,248,250,1), rgba(15,17,23,0));
+        pointer-events:none;
+        z-index:1;
+      }
     </style>
   </head>
   <body class="bg-obsidian text-ink font-sans antialiased">
@@ -373,7 +333,7 @@
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
-                2-4 hours on-site
+                3 hours on-site
               </div>
             </div>
           </div>
@@ -384,12 +344,12 @@
                 <span class="text-accent text-lg font-bold">04</span>
               </div>
               <h3 class="text-xl font-semibold mb-3">Delivery</h3>
-              <p class="text-slate-600 leading-relaxed">Professional editing and color grading in 48-72 hours. Multiple formats for YouTube, MLS and social media.</p>
+              <p class="text-slate-600 leading-relaxed">Professional editing and color grading in 48–71 hours. Multiple formats for YouTube, MLS and social media.</p>
               <div class="mt-6 flex items-center text-accent text-sm font-medium">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/>
                 </svg>
-                48-72 hours
+                48–71 hours
               </div>
             </div>
           </div>
@@ -444,7 +404,7 @@
           <li>1 revision included</li>
         </ul>
         <a href="#book"
-           class="mt-8 inline-flex w-full items-center justify-center rounded-xl border border-slate-300 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50">
+           class="mt-8 inline-flex w-full items-center justify-center rounded-xl border border-accent px-4 py-3 font-semibold text-accent hover:bg-accent/10">
           Get Started
         </a>
       </article>
@@ -452,7 +412,7 @@
       <!-- Professional (featured) -->
       <article class="relative rounded-2xl bg-white p-8 shadow-xl ring-2 ring-accent/50 hover:shadow-2xl transition">
         <div class="absolute -top-3 right-6 rounded-full bg-accent px-3 py-1 text-xs font-bold text-black shadow">Most Popular</div>
-        <div class="text-sm font-semibold text-slate-500">Professional</div>
+        <div class="text-sm font-semibold text-slate-500 underline decoration-accent underline-offset-4">Professional</div>
         <div class="mt-2 text-4xl font-bold tracking-tight">$499</div>
         <ul class="mt-6 space-y-2 text-slate-600">
           <li>4–5 minute cinematic FPV video</li>
@@ -631,9 +591,7 @@
             Selected projects — tap to view. Replace thumbnails and links with your own video URLs.
           </p>
         </div>
-        <a href="#book" class="hidden md:inline-flex items-center justify-center rounded-xl bg-accent px-4 py-2 font-semibold text-black">
-          Book a flight
-        </a>
+        <!-- Botón interno eliminado -->
       </div>
 
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -754,7 +712,7 @@
                       <div class="benefit-number">03</div>
                       <div class="benefit-icon">
                         <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2z"/>
                         </svg>
                       </div>
                     </div>
@@ -880,8 +838,7 @@
     </section>
 
 
-    <!-- FAQ CON FONDO NEGRO Y GRADIENTE -->
- <!-- FAQ (fondo claro, texto oscuro) -->
+    <!-- FAQ (fondo claro, texto oscuro) -->
 <section id="faq" class="py-20 bg-gray-50 text-slate-900">
   <div class="mx-auto max-w-7xl px-5">
     <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">FAQ</h2>
