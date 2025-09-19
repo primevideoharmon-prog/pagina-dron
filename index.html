@@ -21,7 +21,8 @@
               obsidian: '#0f1117',
               surface: '#171b22',
               ink: '#e9eef5',
-              accent: { DEFAULT: '#2563EB', soft: '#2563EB1a' } /* cambia aquí tu azul */
+              /* ====== AZUL -> TEAL SERIO (#0a888c) ====== */
+              accent: { DEFAULT: '#0a888c', soft: '#0a888c1a' }
             },
             boxShadow: { soft: '0 10px 30px rgba(0,0,0,.35)' },
             fontFamily: {
@@ -74,16 +75,17 @@
       .pulse-ring { animation: pulse-ring 2s cubic-bezier(0.455,0.03,0.515,0.955) infinite; }
       @keyframes pulse-ring { 0%{transform:scale(.8);opacity:1} 100%{transform:scale(2.5);opacity:0} }
 
+      /* BADGE con el nuevo color */
       .tech-badge {
-        background: rgba(37,99,235,0.10);
-        border: 1px solid rgba(37,99,235,0.30);
-        color: #2563EB;
+        background: rgba(10,136,140,0.10);
+        border: 1px solid rgba(10,136,140,0.30);
+        color: #0a888c;
         backdrop-filter: blur(10px);
       }
 
       /* ===== GRADIENTES & FADES PORTFOLIO ===== */
       :root{
-        --portfolio-green: #2563EB; /* usa el mismo azul serio */
+        --portfolio-green: #0a888c; /* usa el mismo tono */
       }
       .portfolio-solid{
         position: relative;
@@ -243,13 +245,13 @@
             <!-- Right Column (drone) -->
             <div class="relative">
               <div class="relative floating-element">
-              <img
-                src="https://se-cdn.djiits.com/tpc/uploads/spu/cover/daf2c8fd679eb886c0ba45a1d015a5fc@xlarge.png"
-                alt="DJI Avata FPV drone"
-                class="w-64 sm:w-80 md:w-full md:max-w-lg mx-auto drop-shadow-2xl"
-              />
-
-                <div class="absolute inset-0 flex items-center justify-center">
+                <img
+                  src="https://se-cdn.djiits.com/tpc/uploads/spu/cover/daf2c8fd679eb886c0ba45a1d015a5fc@xlarge.png"
+                  alt="DJI Avata FPV drone"
+                  class="w-64 sm:w-80 md:w-full md:max-w-lg mx-auto drop-shadow-2xl"
+                />
+                <!-- SOLO MOBILE: ocultar anillos -->
+                <div class="absolute inset-0 hidden md:flex items-center justify-center">
                   <div class="w-96 h-96 rounded-full border border-accent/20 absolute animate-spin" style="animation-duration:20s;"></div>
                   <div class="w-80 h-80 rounded-full border border-accent/10 absolute animate-spin" style="animation-duration:15s;animation-direction:reverse;"></div>
                 </div>
@@ -305,7 +307,7 @@
 
           <div class="relative group">
             <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-accent/20">
-              <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+              <div class="w-12 h-12 rounded-XL bg-accent/10 flex items-center justify-center mb-6 rounded-xl">
                 <span class="text-accent text-lg font-bold">03</span>
               </div>
               <h3 class="text-xl font-semibold mb-3">Production</h3>
@@ -448,7 +450,7 @@
         </div>
 
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <!-- Service Cards (sin cambios de mobile específicos aquí) -->
+          <!-- Service Cards (dejamos colores variados tal como estaban) -->
           <div class="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-accent/20">
             <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -564,7 +566,6 @@
             Selected projects — tap to view. Replace thumbnails and links with your own video URLs.
           </p>
         </div>
-        <!-- botón removido en mobile y desktop, como pediste antes -->
       </div>
 
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -619,21 +620,78 @@
       </p>
     </header>
 
-    <!-- MOBILE (≤ lg): MISMA imagen central con anillos, versión compacta -->
+    <!-- MOBILE (≤ lg): MISMA imagen + anillos compactos + BENEFICIOS en grid -->
     <div class="lg:hidden">
-      <div class="relative mx-auto mb-8 w-64 h-64 flex items-center justify-center">
+      <div class="relative mx-auto mb-6 w-64 h-64 flex items-center justify-center">
         <!-- anillos -->
         <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-44 h-44 border border-blue-600/20 rounded-full"></div>
+          <div class="w-44 h-44 border border-accent/20 rounded-full"></div>
           <div class="w-56 h-56 border border-accent/15 rounded-full absolute"></div>
         </div>
         <!-- imagen central (misma que desktop) -->
-        <div class="relative bg-white rounded-full p-4 border border-blue-600/30 shadow-2xl z-10">
+        <div class="relative bg-white rounded-full p-4 border border-accent/30 shadow-2xl z-10">
           <img
             src="https://se-cdn.djiits.com/tpc/uploads/spu/cover/daf2c8fd679eb886c0ba45a1d015a5fc@xlarge.png"
             alt="DJI Avata FPV drone"
             class="w-28 h-auto drop-shadow-2xl"
           />
+        </div>
+      </div>
+
+      <!-- Beneficios (cuadros compactos como en desktop, en 2 columnas) -->
+      <div class="grid grid-cols-2 gap-3 mb-6">
+        <div class="bg-white rounded-xl p-3 border border-accent/30 shadow-sm">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-accent text-sm font-semibold">01</span>
+            <span class="text-xs text-accent">🎥</span>
+          </div>
+          <h4 class="text-sm font-semibold text-slate-900">Immersive Walkthroughs</h4>
+          <p class="text-[11px] text-slate-600">Seamless room-to-room flow</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-3 border border-accent/30 shadow-sm">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-accent text-sm font-semibold">02</span>
+            <span class="text-xs text-accent">⚡</span>
+          </div>
+          <h4 class="text-sm font-semibold text-slate-900">Access & Angles</h4>
+          <p class="text-[11px] text-slate-600">Tight spaces without heavy gear</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-3 border border-accent/30 shadow-sm">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-accent text-sm font-semibold">03</span>
+            <span class="text-xs text-accent">📊</span>
+          </div>
+          <h4 class="text-sm font-semibold text-slate-900">Cinematic Stability</h4>
+          <p class="text-[11px] text-slate-600">Movie-grade smooth motion</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-3 border border-accent/30 shadow-sm">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-accent text-sm font-semibold">04</span>
+            <span class="text-xs text-accent">🌐</span>
+          </div>
+          <h4 class="text-sm font-semibold text-slate-900">Context & Scale</h4>
+          <p class="text-[11px] text-slate-600">Aerial perspectives reveal lot size</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-3 border border-accent/30 shadow-sm">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-accent text-sm font-semibold">05</span>
+            <span class="text-xs text-accent">⏱</span>
+          </div>
+          <h4 class="text-sm font-semibold text-slate-900">Speed & Efficiency</h4>
+          <p class="text-[11px] text-slate-600">Minimal disruption and setup</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-3 border border-accent/30 shadow-sm">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-accent text-sm font-semibold">06</span>
+            <span class="text-xs text-accent">🧰</span>
+          </div>
+          <h4 class="text-sm font-semibold text-slate-900">4K Performance</h4>
+          <p class="text-[11px] text-slate-600">Optimized for all platforms</p>
         </div>
       </div>
 
@@ -646,31 +704,31 @@
       </div>
     </div>
 
-    <!-- DESKTOP (lg+): componente completo con anillos y tarjetas (sin cambios estéticos respecto a tu versión buena) -->
+    <!-- DESKTOP (lg+): componente completo con anillos y tarjetas -->
     <div class="hidden lg:block">
       <div class="relative flex justify-center mb-12">
         <div class="relative w-[800px] h-[600px] flex items-center justify-center">
           <!-- anillos -->
           <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-[400px] h-[400px] border border-blue-600/20 rounded-full"></div>
+            <div class="w-[400px] h-[400px] border border-accent/20 rounded-full"></div>
             <div class="w-[500px] h-[500px] border border-accent/10 rounded-full absolute"></div>
           </div>
 
           <!-- imagen central -->
-          <div class="relative bg-white rounded-full p-8 border border-blue-600/30 shadow-2xl z-10">
+          <div class="relative bg-white rounded-full p-8 border border-accent/30 shadow-2xl z-10">
             <img
               src="https://se-cdn.djiits.com/tpc/uploads/spu/cover/daf2c8fd679eb886c0ba45a1d015a5fc@xlarge.png"
               alt="DJI Avata FPV drone"
               class="w-48 h-auto drop-shadow-2xl" />
           </div>
 
-          <!-- tarjetas alrededor (igual que antes) -->
+          <!-- tarjetas alrededor -->
           <!-- Top -->
           <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4">
-            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-blue-600/30 w-64 text-center">
+            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-accent/30 w-64 text-center">
               <div class="flex items-center justify-center gap-3 mb-3">
-                <div class="font-semibold text-blue-600">01</div>
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="font-semibold text-accent">01</div>
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                 </svg>
               </div>
@@ -683,8 +741,8 @@
           <div class="absolute top-12 right-0 translate-x-4">
             <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-accent/30 w-64">
               <div class="flex items-center gap-3 mb-3">
-                <div class="font-semibold text-blue-600">02</div>
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="font-semibold text-accent">02</div>
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
               </div>
@@ -695,10 +753,10 @@
 
           <!-- Bottom Right -->
           <div class="absolute bottom-12 right-0 translate-x-4">
-            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-blue-600/30 w-64">
+            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-accent/30 w-64">
               <div class="flex items-center gap-3 mb-3">
-                <div class="font-semibold text-blue-600">03</div>
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="font-semibold text-accent">03</div>
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                 </svg>
               </div>
@@ -711,7 +769,7 @@
           <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-4">
             <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-accent/30 w-64 text-center">
               <div class="flex items-center justify-center gap-3 mb-3">
-                <div class="font-semibold text-blue-600">04</div>
+                <div class="font-semibold text-accent">04</div>
                 <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
                 </svg>
@@ -723,10 +781,10 @@
 
           <!-- Top Left -->
           <div class="absolute top-12 left-0 -translate-x-4">
-            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-blue-600/30 w-64">
+            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-accent/30 w-64">
               <div class="flex items-center gap-3 mb-3">
-                <div class="font-semibold text-blue-600">05</div>
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="font-semibold text-accent">05</div>
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
@@ -737,10 +795,10 @@
 
           <!-- Bottom Left -->
           <div class="absolute bottom-12 left-0 -translate-x-4">
-            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-blue-600/30 w-64">
+            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-accent/30 w-64">
               <div class="flex items-center gap-3 mb-3">
-                <div class="font-semibold text-blue-600">06</div>
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="font-semibold text-accent">06</div>
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m4 0H3a1 1 0 000 2v12a3 3 0 003 3h12a3 3 0 003-3V6a1 1 0 000-2z"/>
                 </svg>
               </div>
@@ -751,7 +809,7 @@
         </div>
       </div>
 
-      <!-- Info central (debajo del componente con anillos) -->
+      <!-- Info central -->
       <div class="text-center">
         <h3 class="text-2xl font-semibold text-slate-900 mb-2">4K Ultra-HD Camera</h3>
         <p class="text-slate-600 mb-0 max-w-2xl mx-auto">
